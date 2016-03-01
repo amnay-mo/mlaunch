@@ -2,15 +2,15 @@
 set -e
 
 if [ "${1:0:1}" = '-' ]; then
-  set -- mlaunch "$@" --dir /data --verbose
+  set -- mlaunch "$@"
 fi
 
 if [ "$1" = 'mlaunch' ]; then
   if [ -f /data/.mlaunch_startup ] ; then
     echo 'Already initialized. Ignoring provided command!'
-    mlaunch start --dir /data --verbose
+    mlaunch start
   else
-    $@ --dir /data --verbose
+    $@
   fi
 else
   exec "$@"
